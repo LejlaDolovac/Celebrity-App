@@ -1,5 +1,7 @@
 <template>
   <div id="app">
+     <h3>Star Crush</h3>
+     <img> <!-- add an image -->
     <div id="nav">
       <router-link to="/newCeleb">Add celebreties</router-link> |
       <router-link to="/">Have seen</router-link> 
@@ -7,6 +9,16 @@
     <router-view/>
   </div>
 </template>
+
+<script>
+export default {
+  name: 'App',
+  beforeMount(){
+    this.$store.dispatch('getCelebs'); // dispatch action in   store
+  }
+}
+</script>
+
 
 <style>
 body{
