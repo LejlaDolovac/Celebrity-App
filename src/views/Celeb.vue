@@ -9,7 +9,7 @@
     <img alt="" src="">
 
     <div class="see-button">
-        <a href="#" class="see-btn" @click="seeCeleb"> See my celebrity</a>
+        <a href="#" class="see-btn" @click="seeCeleb">See my celebrity</a>
     </div>
   </article>
   
@@ -26,7 +26,7 @@ export default {
   methods: {
      async seeCeleb(){
       this.$store.dispatch('celeb');
-      console.log(seeCeleb);
+      // console.log(seeCeleb);
 
     }
   },

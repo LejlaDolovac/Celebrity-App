@@ -4,30 +4,32 @@
   <main id="NewCeleb">
     <h2>Please add a new celebretie that you want to see</h2>
     <form action="#">
-      <input class="addName" type="text" v-model="filter" name="name"> <br>
+      <input class="addName" type="text" v-model="name"> <br>
       <a href="#" class="btn" @click="createCeleb">Add celebreties</a>
       </form> 
-      <tbody>
-          <tr v-for="(NewCeleb, index) in NewCeleb" :key="index">
-              <td>{{ want.name }}</td>
-          </tr>
-      </tbody>
-     
+
+      <viewCeleb>
+        
+      </viewCeleb>
+
   </main>
 </template>
 
 
 
 <script>
-import Celeb from '@/views/Celeb';
-
-
+import viewCeleb from '@/views/viewCeleb';
+import axios from 'axios';
 
 export default {
   name: 'NewCeleb',
+  components: {
+    viewCeleb
+  },
   data (){
     return {
-      filter: null,
+      name: null,
+      celebList: [],
       newCeleb: {
         name: " ",
       }
@@ -35,12 +37,16 @@ export default {
   },
   methods: { // creates the new celebrite
     async createCeleb(){
-      this.$store.dispatch('celeb');
-      this.$router.push('/celeb');
-        console.log(createCeleb);
-
-
-    }
+      axios.post('http://localhost:3000/products', {
+          name: this.name
+      })
+      .then(() => {
+          this.$emit('update-list')
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+    },
   }
   
 }
