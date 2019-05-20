@@ -1,56 +1,46 @@
 <!-- celebreties you have seen and celebs you want to see is displayed here, products -->
-
 <template>
-  <article class="kandis">
-     <h3> I want to see </h3>
-    <aside class="name"> {{seen.name}}</aside>
-    <h3> Have seen </h3>
-    <aside class="have-seen">{{seen.name}}</aside>
-    <img alt="" src="">
-
-    <div class="see-button">
-        <a href="#" class="see-btn" @click="seeCeleb">See my celebrity</a>
-    </div>
-  </article>
-  
+    <ul>
+        <li v-for="celeb in celebs" :key="celeb._id">  
+          <p>{{celeb.name}}</p>
+          <a href="#" class="btn" @click="removeCeleb(celeb._id)">Remove celebreties</a>
+        </li>
+    </ul>
 </template>
 
 <script>
-// @ is an alias to /src
- // import  from '@/components/.vue'
+//import viewCeleb from '@/components/viewCeleb';
 
 export default {
-  name: 'kandis',
-  components: {
+  beforeMount(){
+    this.$store.dispatch('getCelebs');
+
   },
   methods: {
-     async seeCeleb(){
-      this.$store.dispatch('celeb');
+    // async seeCeleb(){
+     // this.$store.dispatch('celeb');
       // console.log(seeCeleb);
-
+  removeCeleb (id) {
+      this.$store.dispatch('removeCeleb', id)
     }
   },
   computed: {
-    celeb(){
-      return this.$store.state.celeb; 
+     celebs (){
+      return this.$store.state.celebs; 
     }
-  }
+  }  
 }
 </script>
 
+
+
+
+
+
 <style>
 
-.kandis{
-  background: orange;
-  display: flex;
-  flex-direction: column;
-  padding: 1rem;
-  box-sizing: border-box;
+p{
+  color:black;
 }
-
-
-
-
-
 
 </style>

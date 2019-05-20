@@ -1,9 +1,9 @@
 <template>
   <div id="app">
      <h3>Star Crush</h3>
-     <img> <!-- add an image -->
+     <img src="./assets/star.png" alt="Star" height="300" width="200">
     <div id="nav">
-      <router-link to="/newCeleb">Add celebreties</router-link> |
+      <router-link to="/addCeleb">Add celebreties</router-link> |
       <router-link to="/">Have seen</router-link> 
     </div>
     <router-view/>
@@ -12,9 +12,14 @@
 
 <script>
 export default {
-  name: 'App',
+  name: 'app',
   beforeMount(){
     this.$store.dispatch('getCelebs'); // dispatch action in   store
+  },
+  methods: {
+    removeCeleb (id) {
+      this.$store.dispatch('removeCeleb', id)
+    }
   }
 }
 </script>
@@ -22,16 +27,17 @@ export default {
 
 <style>
 body{
-    background-color:bisque;
+    background-color: lightblue;
 
 
 }
 #app {
-  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; 
+  font-family: Chalkduster, fantasy;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: black;  
+  font-size: 1rem;
 }
 #nav {
   padding: 30px;
@@ -40,11 +46,11 @@ body{
 #nav a {
   font-weight: bold;
   text-decoration: none;
-  color: blueviolet;
+  color: darkblue;
 }
 
 #nav a.router-link-exact-active {
   text-decoration: none;
-  color: blueviolet;
+  color: darkblue;
 }
 </style>

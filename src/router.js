@@ -13,9 +13,9 @@ export default new Router({
       component: () => import('./views/Celeb.vue')
     },
     {
-      path: '/newCeleb',
-      name: 'newCeleb',
-      component: () => import('./views/newCeleb.vue')
+      path: '/addCeleb',
+      name: 'addCeleb',
+      component: () => import('./views/addCeleb.vue')
     }
   ]
 });

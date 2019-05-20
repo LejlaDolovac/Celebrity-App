@@ -1,7 +1,10 @@
+// this is the list
+
 <template>
-    <ul>
-        <li v-for="celeb in celebList" v-bind:key="celeb._id">  
-            {{celeb.name}}
+    <ul class="checkboxes">
+        <li  v-for="celeb in celebList" v-bind:key="celeb._id">  
+                 {{celeb.name}} <input type="checkbox">
+ 
         </li>
     </ul>
 </template>
@@ -18,7 +21,7 @@ export default {
   },
   mounted() {
     this.$parent.$on('update-list', () => {
-          console.log('test');
+          console.log('It works!');
           axios.get('http://localhost:3000/products')
             .then((response) => {
             this.celebList = response.data.products
@@ -38,5 +41,14 @@ export default {
 
 
 <style>
+#checkboxes ul {
+  margin: 0;
+  list-style: none;
+  float: left;
+}
+
+li{
+  text-decoration: none;
+}
 
 </style>
