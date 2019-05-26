@@ -1,4 +1,4 @@
- <!-- Here you add a celeb -->
+<!-- Here you add a celeb -->
 
 <template>
   <main id="addCeleb">

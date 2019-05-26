@@ -39,6 +39,7 @@ export default new Vuex.Store({
         })
         .then(() => {
           // uppdatera din lista
+          this.$store.dispatch('update-list')
         })
         .catch((error) => {
           console.log(error);
