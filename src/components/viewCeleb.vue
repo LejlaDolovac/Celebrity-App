@@ -1,9 +1,9 @@
 // this is the list
 
 <template>
-    <ul class="checkboxes">
+    <ul class="box">
         <li  v-for="celeb in celebList" v-bind:key="celeb._id">  
-                 {{celeb.name}} <input type="checkbox">
+                 {{celeb.name}} 
  
         </li>
     </ul>
@@ -41,14 +41,17 @@ export default {
 
 
 <style>
-#checkboxes ul {
+#box ul {
   margin: 0;
-  list-style: none;
   float: left;
+  list-style-type: none;  
+
 }
 
 li{
   text-decoration: none;
+  list-style-type: none;  
+
 }
 
 </style>

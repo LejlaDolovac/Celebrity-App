@@ -65,6 +65,8 @@ export default {
   font-style: italic;
   font-variant: small-caps;
   font-size: 1rem;
+  list-style-type: none;  
+
 
 
 }

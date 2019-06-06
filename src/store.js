@@ -6,6 +6,13 @@ Vue.use(Vuex);
 
 
 export default new Vuex.Store({
+  data (){
+    return {
+      props: {
+      celebList: [],
+      }
+    };
+  },
   state: {
     newCeleb: [],
     celeb: [],
@@ -19,6 +26,10 @@ export default new Vuex.Store({
     },
     setCelebs(state, celebs){
       state.celebs = celebs;
+    },
+    celebList(state, celebList){
+         console.log(celebList);
+         state.celebList = celebList;
     }
     
 
@@ -29,7 +40,7 @@ export default new Vuex.Store({
            
         let celebs = await axios.get('http://localhost:3000/products');
         console.log(celebs);
-        ctx.commit('setCelebs', celebs.data.products);  // sets the celeb
+        ctx.commit('setCelebs', celebs.data.products); // sets the celeb
 
       },
       /* remove celeb */
@@ -39,11 +50,11 @@ export default new Vuex.Store({
         })
         .then(() => {
           // uppdatera din lista
-          this.$store.dispatch('update-list')
+          location.reload(true);
         })
         .catch((error) => {
           console.log(error);
         });
       },
-  }
+    }
 })
