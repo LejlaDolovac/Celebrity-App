@@ -38,7 +38,7 @@ export default new Vuex.Store({
   actions: {
       async getCelebs(ctx){
            
-        let celebs = await axios.get('http://localhost:3000/products');
+        let celebs = await axios.get('http://localhost:3000/products/seen');
         console.log(celebs);
         ctx.commit('setCelebs', celebs.data.products); // sets the celeb
 
@@ -47,6 +47,18 @@ export default new Vuex.Store({
       async removeCeleb(ctx, id){
         axios.delete('http://localhost:3000/products/', {
             data: {id:id}
+        })
+        .then(() => {
+          // uppdatera din lista
+          location.reload(true);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+      },
+      async moveCeleb(ctx, name){
+        axios.post('http://localhost:3000/products/move', {
+            data: {name:name}
         })
         .then(() => {
           // uppdatera din lista

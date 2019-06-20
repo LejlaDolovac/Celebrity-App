@@ -4,7 +4,7 @@
     <ul class="box">
         <li  v-for="celeb in celebList" v-bind:key="celeb._id">  
                  {{celeb.name}} 
- 
+        <a href="#" class="btn" @click="removeCeleb(celeb.name)">Remove celebreties</a>
         </li>
     </ul>
 </template>
@@ -31,6 +31,12 @@ export default {
             });
       }
     )
+  },
+  methods: {
+    removeCeleb (name) {
+      this.$store.dispatch('removeCeleb', name)
+      this.$store.dispatch('moveCeleb', name)
+    }
   },
 
 

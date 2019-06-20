@@ -33,6 +33,9 @@ export default {
       }
     }
   },
+  mounted() {
+    this.$emit('update-list');
+  },
   methods: { 
     // creates the new celebrite
     async createCeleb(){

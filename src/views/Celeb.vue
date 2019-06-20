@@ -3,7 +3,6 @@
     <ul>
         <li v-for="celeb in celebs" :key="celeb._id">  
           <p>{{celeb.name}}</p>
-          <a href="#" class="btn" @click="removeCeleb(celeb._id)">Remove celebreties</a>
         </li>
     </ul>
 </template>
@@ -20,8 +19,8 @@ export default {
     // async seeCeleb(){
      // this.$store.dispatch('celeb');
       // console.log(seeCeleb);
-  removeCeleb (id) {
-      this.$store.dispatch('removeCeleb', id)
+  removeCeleb (name) {
+      this.$store.dispatch('removeCeleb', name)
     }
   },
   computed: {
